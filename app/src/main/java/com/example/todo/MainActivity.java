@@ -24,5 +24,10 @@ public class MainActivity extends AppCompatActivity {
         items.add("Wash dishes");
         items.add("Finish homework");
         items.add("Play piano");
+
+        btnAdd = findViewById(R.id.btnAdd);
+        editText = findViewById(R.id.editText);
+        rvItems = findViewById(R.id.rvItems);
+        editText.setText("Edited from java");
     }
 }
