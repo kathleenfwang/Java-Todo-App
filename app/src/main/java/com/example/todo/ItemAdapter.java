@@ -43,6 +43,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
             super(itemView);
         }
 
+        // update the view inside the viewholder with this item data
         public void bind(String item) {
         }
     }
