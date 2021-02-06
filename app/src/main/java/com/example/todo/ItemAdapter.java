@@ -3,6 +3,7 @@ package com.example.todo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,12 +40,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
+        // declare the TextView we will be modifying (setting text for)
+        TextView tvItem;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            // set tvItem using the passed in itemView 
+            tvItem = itemView.findViewById(android.R.id.text1);
         }
 
         // update the view inside the viewholder with this item data
         public void bind(String item) {
+            // us the binded item in our textview
+            tvItem.setText(item);
         }
     }
 
