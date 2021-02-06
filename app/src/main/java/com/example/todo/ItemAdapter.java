@@ -18,15 +18,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
     @NonNull
     @Override
+    // create a new ViewHolder and inflate from parent and then return it
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // use layout inflator to inflate a view
-        LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1,parent,false);
-        return null;
+        View todoView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1,parent,false);
+        return new ViewHolder(todoView);
     }
-
+    // bind each data to a viewholder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    // grab the item at the position
+        String item = items.get(position);
+        //bind the data
+        holder.bind(item);
     }
 
     @Override
@@ -37,6 +41,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     class ViewHolder extends RecyclerView.ViewHolder{
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+
+        public void bind(String item) {
         }
     }
 
