@@ -26,7 +26,7 @@ Here's a [walkthrough](https://media.discordapp.net/attachments/7012771289515950
 
 ## Notes
 
-I think the file persistence was definitely new and interesting. The most challenging part was implementing the remove functionality because I had to add a new interface to get the removed item position and then pass it back to main  
+I think the file persistence was definitely new and interesting. The most challenging part was implementing the remove functionality because I had to add a new interface and onClick listeners to get the removed item position and then pass it back to main where the item would be deleted from the model list. When adding an item on the otherhand, that was simply just updating the model list with the new item in main. 
 
 ## License
 
