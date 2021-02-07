@@ -5,16 +5,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 public class MainActivity extends AppCompatActivity {
-    List<String> items;
+    List<String> items = new ArrayList<>(FileUtils.readLines(getDataFile()), Charset.defaultCharset());
     Button btnAdd;
     EditText editText;
     RecyclerView rvItems;
@@ -72,5 +76,9 @@ public class MainActivity extends AppCompatActivity {
     private File getDataFile() {
         // return file directory this app is stored
         return new File(getFilesDir(),"data.txt");
+    }
+    // get the lines from the file into an array
+    private void readDataFile() throws IOException {
+        items = new ArrayList<>(FileUtils.readLines(getDataFile())), Charset.defaultCharset());
     }
 }
