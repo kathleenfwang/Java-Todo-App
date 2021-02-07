@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAdd;
     EditText editText;
     RecyclerView rvItems;
+    ItemAdapter itemAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,18 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         rvItems = findViewById(R.id.rvItems);
 
+        // set LongOnClick
+        ItemAdapter.onLongClickListener onLongClickListener = new ItemAdapter.onLongClickListener() {
+            @Override
+            public void onItemLongClicked(int position) {
+                // remove the item at position from items array
+                items.remove(position);
+                // notify the adapter
+                itemAdapter.notifyItemRemoved(position);
+            }
+        };
         // create the new items adapter
-        ItemAdapter itemAdapter = new ItemAdapter(items);
+        itemAdapter = new ItemAdapter(items, onLongClickListener, this);
         // set item adapter to recycler view
         rvItems.setAdapter(itemAdapter);
         // set new layout manager for recycler view (default is vertical for linear)

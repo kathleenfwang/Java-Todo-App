@@ -1,10 +1,12 @@
 package com.example.todo;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +22,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
     }
     List<String> items;
     onLongClickListener onLongClickListener;
+    Context context;
     // generate constcutor to allow arguments be passed in
-    public ItemAdapter(List<String> items, onLongClickListener onLongClickListener) {
+    public ItemAdapter(List<String> items, onLongClickListener onLongClickListener, Context context) {
+        this.context = context;
         this.items = items;
         this.onLongClickListener = onLongClickListener;
     }
@@ -76,6 +80,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 public boolean onLongClick(View view) {
                     // on long click, remove the item
                     onLongClickListener.onItemLongClicked(getAdapterPosition());
+                    Toast.makeText(context, "Deleted " + tvItem.getText(), Toast.LENGTH_SHORT).show();
                     // consuming the long click
                     return true;
                 }
