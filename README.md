@@ -22,13 +22,11 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
-<img src='https://media.discordapp.net/attachments/701277128951595032/807839763473236028/screen-capture.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Here's a [walkthrough](https://media.discordapp.net/attachments/701277128951595032/807839763473236028/screen-capture.gif) of implemented user stories:
 
 ## Notes
 
-I think the file persistence was definitely new and interesting. The most challenging part was implementing the remove functionality because I also had to add a new interface to listen to get the removed item position and then pass it back to main  
+I think the file persistence was definitely new and interesting. The most challenging part was implementing the remove functionality because I had to add a new interface to get the removed item position and then pass it back to main  
 
 ## License
 
