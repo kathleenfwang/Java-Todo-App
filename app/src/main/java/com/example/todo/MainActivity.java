@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 editText.setText("");
             }
         });
+    }
+    // return file from storage
+    private File getDataFile() {
+        // return file directory this app is stored
+        return new File(getFilesDir(),"data.txt");
     }
 }
