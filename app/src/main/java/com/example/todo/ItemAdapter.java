@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
-    // generate constcutor to allow arguments be passed in
+
     List<String> items;
+    // generate constcutor to allow arguments be passed in
     public ItemAdapter(List<String> items) {
         this.items = items;
     }

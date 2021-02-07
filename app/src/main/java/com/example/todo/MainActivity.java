@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         items.add("Finish homework");
         items.add("Play piano");
 
+        // set the variables to equal their View Ids
+        btnAdd = findViewById(R.id.btnAdd);
+        editText = findViewById(R.id.editText);
+        rvItems = findViewById(R.id.rvItems);
+
         // create the new items adapter
         ItemAdapter itemAdapter = new ItemAdapter(items);
         // set item adapter to recycler view
@@ -33,9 +38,5 @@ public class MainActivity extends AppCompatActivity {
         // set new layout manager for recycler view (default is vertical for linear)
         rvItems.setLayoutManager(new LinearLayoutManager(this));
 
-        btnAdd = findViewById(R.id.btnAdd);
-        editText = findViewById(R.id.editText);
-        rvItems = findViewById(R.id.rvItems);
-        editText.setText("Edited from java");
     }
 }
