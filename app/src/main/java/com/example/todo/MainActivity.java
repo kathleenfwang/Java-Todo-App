@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -37,6 +38,23 @@ public class MainActivity extends AppCompatActivity {
         rvItems.setAdapter(itemAdapter);
         // set new layout manager for recycler view (default is vertical for linear)
         rvItems.setLayoutManager(new LinearLayoutManager(this));
+
+        // set onclick listener for add button
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // onClick activity happens in here
+                // get the text from the editText view and turn into string
+                String todoItem = editText.getText().toString();
+                // add item to model
+                items.add(todoItem );
+                // notify adapter an item is added
+                itemAdapter.notifyItemInserted(items.size() -1);
+                // clear editText
+                editText.setText("");
+            }
+        });
 
     }
 }
