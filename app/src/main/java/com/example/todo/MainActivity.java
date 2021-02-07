@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -21,7 +22,6 @@ import org.apache.commons.io.FileUtils;
 
 public class MainActivity extends AppCompatActivity {
     List<String> items;
-    Button clearAll;
     Button btnAdd;
     EditText editText;
     RecyclerView rvItems;
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         readDataFile();
         // set the variables to equal their View Ids
         btnAdd = findViewById(R.id.btnAdd);
-        clearAll = findViewById(R.id.clearbtn);
         editText = findViewById(R.id.editText);
         rvItems = findViewById(R.id.rvItems);
 
@@ -55,17 +54,8 @@ public class MainActivity extends AppCompatActivity {
         rvItems.setAdapter(itemAdapter);
         // set new layout manager for recycler view (default is vertical for linear)
         rvItems.setLayoutManager(new LinearLayoutManager(this));
-        // set onclick for clear all
-        clearAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                items = new ArrayList<>();
-                saveItems();
-            }
-        });
         // set onclick listener for add button
         btnAdd.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 // onClick activity happens in here
