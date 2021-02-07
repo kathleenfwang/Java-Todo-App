@@ -1,6 +1,7 @@
 package com.example.todo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -24,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
         items.add("Wash dishes");
         items.add("Finish homework");
         items.add("Play piano");
+
+        // create the new items adapter
+        ItemAdapter itemAdapter = new ItemAdapter(items);
+        // set item adapter to recycler view
+        rvItems.setAdapter(itemAdapter);
+        // set new layout manager for recycler view (default is vertical for linear)
+        rvItems.setLayoutManager(new LinearLayoutManager(this));
 
         btnAdd = findViewById(R.id.btnAdd);
         editText = findViewById(R.id.editText);
