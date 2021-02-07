@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,7 +79,17 @@ public class MainActivity extends AppCompatActivity {
         return new File(getFilesDir(),"data.txt");
     }
     // get the lines from the file into an array
-    private void readDataFile() throws IOException {
-        items = new ArrayList<>(FileUtils.readLines(getDataFile())), Charset.defaultCharset());
+    private void readDataFile() {
+        try {
+            items = new ArrayList<>(FileUtils.readLines(getDataFile())), Charset.defaultCharset());
+        }
+        catch (IOException ioException) {
+            Log.e("Main Activity", "error reading data: " + ioException);
+            items = new ArrayList<String>;
+        }
     }
+    // save items by adding to data file
+
+
+
 }
