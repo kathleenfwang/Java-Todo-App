@@ -18,8 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+
 public class MainActivity extends AppCompatActivity {
-    List<String> items = new ArrayList<>(FileUtils.readLines(getDataFile()), Charset.defaultCharset());
+    List<String> items;
     Button btnAdd;
     EditText editText;
     RecyclerView rvItems;
@@ -29,11 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        items = new ArrayList<>();
-        items.add("Wash dishes");
-        items.add("Finish homework");
-        items.add("Play piano");
-
+        readDataFile();
         // set the variables to equal their View Ids
         btnAdd = findViewById(R.id.btnAdd);
         editText = findViewById(R.id.editText);
@@ -47,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 items.remove(position);
                 // notify the adapter
                 itemAdapter.notifyItemRemoved(position);
+                saveItems();
             }
         };
         // create the new items adapter
@@ -70,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 itemAdapter.notifyItemInserted(items.size() -1);
                 // clear editText
                 editText.setText("");
+                saveItems();
             }
         });
     }
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     // get the lines from the file into an array
     private void readDataFile() {
         try {
-            items = new ArrayList<>(FileUtils.readLines(getDataFile()), Charset.defaultCharset());
+            items = new ArrayList<>(FileUtils.readLines(getDataFile(), String.valueOf(Charset.defaultCharset())));
         }
         catch (IOException ioException) {
             Log.e("Main Activity", "error reading data: " + ioException);
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             FileUtils.writeLines(getDataFile(), items);
         }
        catch (IOException ioException) {
-           Log.e("Main Activity", "error saving data: " + ioException);
+           Log.e("Main Activity", "error writing data: " + ioException);
        }
     }
 
