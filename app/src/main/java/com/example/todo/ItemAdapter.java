@@ -1,5 +1,6 @@
 package com.example.todo;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
@@ -55,6 +57,21 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         public void bind(String item) {
             // us the binded item in our textview
             tvItem.setText(item);
+            // set  long click listener for each item to hold remove functinonality
+            tvItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // change color
+                    tvItem.setTextColor(Color.parseColor("#bdbdbd"));
+                }
+            });
+            tvItem.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    // on long click, remove the item
+                    return false;
+                }
+            });
         }
     }
 

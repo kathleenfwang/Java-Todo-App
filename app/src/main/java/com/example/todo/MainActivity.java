@@ -55,6 +55,5 @@ public class MainActivity extends AppCompatActivity {
                 editText.setText("");
             }
         });
-
     }
 }
