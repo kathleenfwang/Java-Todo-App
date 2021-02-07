@@ -81,15 +81,21 @@ public class MainActivity extends AppCompatActivity {
     // get the lines from the file into an array
     private void readDataFile() {
         try {
-            items = new ArrayList<>(FileUtils.readLines(getDataFile())), Charset.defaultCharset());
+            items = new ArrayList<>(FileUtils.readLines(getDataFile()), Charset.defaultCharset());
         }
         catch (IOException ioException) {
             Log.e("Main Activity", "error reading data: " + ioException);
-            items = new ArrayList<String>;
+            items = new ArrayList<>();
         }
     }
-    // save items by adding to data file
-
-
+    // save items by writing to data file
+    private void saveItems() {
+        try {
+            FileUtils.writeLines(getDataFile(), items);
+        }
+       catch (IOException ioException) {
+           Log.e("Main Activity", "error saving data: " + ioException);
+       }
+    }
 
 }
