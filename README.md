@@ -20,8 +20,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a 
-![walkthrough](https://media.discordapp.net/attachments/701277128951595032/807839763473236028/screen-capture.gif) 
+Here's a [walkthrough](https://media.discordapp.net/attachments/701277128951595032/807839763473236028/screen-capture.gif) 
 of implemented user stories:
 
 ## Notes
